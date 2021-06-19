@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +12,23 @@
 </head>
 <body>
     <h1>Singup Project</h1>
+    <img src="{% static 'puppy.jpg' %}" height="400" alt="강아지입니다">
     <div>
         <a href="{% url 'new' %}">Write Your Information</a>
     </div>
-    {% for signup in signup %}
+    
+    {% for signup in signup.all %}
         <h1>{{signup.name}}</h1>
         {{signup.pub_date}}<br>
         {{signup.age}}<br>        
         {{signup.email}}<br>
-        {{signup.introduce}}
+        {{signup.introduce}}<br>
+        <img src="{{static.image.url}}" height="400"><br>
 
         <a href="{% url 'detail' signup.id %}">...more</a>
     {% endfor %}
+{% endblock %}
+
+
 </body>
 </html>

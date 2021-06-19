@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from.models import Signup
+from .models import Signup
 from django.utils import timezone
 # Create your views here.
 def home(request):
@@ -19,7 +19,7 @@ def create(request):
     new_signup.age = request.POST['age']
     new_signup.pub_date = timezone.now()
     new_signup.email = request.POST['email']
-    new_signup.introduce = request.POST['introduce']   
+    new_signup.introduce = request.POST['introduce'] 
     new_signup.save()
     return redirect('detail', str(new_signup.id))
 
